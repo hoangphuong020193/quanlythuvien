@@ -1,0 +1,7 @@
+<table>
+  <tbody>
+    <tr *ngFor="let row of rows">
+      <td class="year-input" *ngFor="let yearObj of row.listYears" (click)="selectYear(yearObj)" [ngClass]="{'selected': yearObj.year == yearSelected, 'disabled': yearObj.disabled}" >{{yearObj.year}}</td>
+    </tr>
+  </tbody>
+</table>

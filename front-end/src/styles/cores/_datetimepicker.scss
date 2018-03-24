@@ -1,0 +1,130 @@
+.datetimepicker,
+datetimepicker {
+  width: 100%;
+  i.icon-calendar {
+    position: absolute;
+    padding: 6px;
+    font-size: $font-size-md;
+  }
+  input[type="text"]:not(.no-icon) {
+    @extend input[type="text"];
+    padding-left: $input-padding-y-md + 1.7 !important;
+  }
+  .datetimepicker-panel {
+    border: 1px solid rgba($black, .2);
+    position: absolute;
+    background: $white;
+    display: none;
+    box-shadow: 0 3px 9px rgba($black, .5);
+    margin: 5px 0;
+    padding: 5px;
+    z-index: 10;
+    &.show {
+      display: block !important;
+    }
+    .dt-nav {
+      display: flex;
+      justify-content: space-between;
+      height: 26px;
+      .previous,
+      .next,
+      .select-screen {
+        border-radius: 3px;
+        cursor: pointer;
+        &:hover {
+          background: rgba($black, .1);
+        }
+      }
+      .previous,
+      .next {
+        width: 36px;
+        .icon {
+          font-weight: 800;
+        }
+      }
+      .previous {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .select-screen {
+        width: 100%;
+        font-size: $font-size-lg;
+        font-weight: 600;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .next {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+    .dt-day,
+    .dt-month,
+    .dt-year {
+      display: none;
+      table {
+        border: none;
+        text-align: center;
+        height: 100%;
+        tr,
+        td,
+        th {
+          border: none;
+          border-radius: 3px;
+        }
+        th,
+        td {
+          text-align: center;
+          padding: 5px;
+        }
+        thead {
+          th {
+            font-size: $font-size-xs;
+            color: $black;
+            font-weight: 600;
+            width: 32px;
+          }
+        }
+        tbody {
+          tr {
+            td {
+              &.range-out {
+                color: $black035;
+              }
+              &.day-input:first-child {
+                color: $orange;
+                &.range-out {
+                  color: rgba($orange, .35);
+                }
+              }
+              &.month-input,
+              &.year-input {
+                height: 45px;
+              }
+              &.disabled {
+                background: rgba($black, .1);
+                cursor: not-allowed;
+              }
+              &:not(.disabled):hover {
+                background: rgba($blue, .5);
+                cursor: pointer;
+              }
+              &.selected {
+                background: rgba($blue, .5);
+              }
+            }
+          }
+        }
+      }
+    }
+    .dt-time {
+      input {
+        padding: 5px !important;
+        width: 50px;
+      }
+    }
+  }
+}

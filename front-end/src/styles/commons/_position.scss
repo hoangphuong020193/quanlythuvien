@@ -1,0 +1,16 @@
+.position-relative {
+  position: relative;
+}
+
+.position-absolute {
+  position: absolute;
+}
+
+.position-fixed {
+  position: fixed;
+}
+
+.above-overlay {
+  z-index: 1001;
+  position: relative;
+}

@@ -1,0 +1,18 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/back-end/Library/.vs/Library/v15/Server/sqlite3
+/back-end/Library/Library.API/obj/Debug/netcoreapp2.0
+/back-end/Library/Library.Common/bin/Debug/netcoreapp2.0
+/back-end/Library/Library.Common/obj
+/back-end/Library/Library.Constants/bin/Debug/netcoreapp2.0
+/back-end/Library/Library.Constants/obj
+/back-end/Library/Library.CrossCutting/obj
+/back-end/Library/Library.CrossCutting/bin/Debug/netcoreapp2.0
+/back-end/Library/Library.Data/bin/Debug/netcoreapp2.0
+/back-end/Library/Library.Data/obj/Debug/netcoreapp2.0
+/back-end/Library/Library.Library/bin/Debug/netcoreapp2.0
+/back-end/Library/Library.Library/obj
+/back-end/Library/LibraryApiFramework/bin/Debug/netcoreapp2.0
+/back-end/Library/LibraryApiFramework/obj

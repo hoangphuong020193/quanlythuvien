@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Library.Constants\Library.Constants.csproj" />
+    <ProjectReference Include="..\Library.CrossCutting\Library.CrossCutting.csproj" />
+    <ProjectReference Include="..\Library.Data\Library.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNetCore.Http.Abstractions">
+      <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.aspnetcore.http.abstractions\2.0.1\lib\netstandard2.0\Microsoft.AspNetCore.Http.Abstractions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Admin\Queries\" />
+    <Folder Include="Admin\ViewModels\" />
+    <Folder Include="BookRequest\Queries\" />
+    <Folder Include="Book\Commands\" />
+    <Folder Include="Book\Queries\" />
+    <Folder Include="Cart\Commands\" />
+    <Folder Include="Cart\Queries\" />
+    <Folder Include="Cart\ViewModels\" />
+    <Folder Include="Category\Commands\" />
+    <Folder Include="Category\Queries\" />
+    <Folder Include="Category\ViewModels\" />
+    <Folder Include="Favorite\Commands\" />
+    <Folder Include="Library\Commands\" />
+    <Folder Include="Library\Queries\" />
+    <Folder Include="Library\ViewModels\" />
+    <Folder Include="Publisher\Commands\" />
+    <Folder Include="Publisher\Queries\" />
+    <Folder Include="Publisher\ViewModels\" />
+    <Folder Include="Supplier\Commands\" />
+    <Folder Include="Supplier\Queries\" />
+    <Folder Include="Supplier\ViewModels\" />
+  </ItemGroup>
+
+</Project>

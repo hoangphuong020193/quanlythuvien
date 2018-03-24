@@ -1,0 +1,46 @@
+dialog-wrapper {
+  .modal {
+    &.fade {
+      &.show {
+        background: $background-backdrop;
+      }
+    }
+    .modal-dialog {
+      max-width: 25%;
+      &.modal-xs {
+        max-width: 18%;
+      }
+      &.modal-sm {
+        max-width: 25%;
+      }
+      &.modal-md {
+        max-width: 40%;
+      }
+      &.modal-lg {
+        max-width: 60%;
+      }
+      &.modal-xl {
+        max-width: 75%;
+      }
+    }
+    .modal-content {
+      .modal-close {
+        border-radius: 50%;
+        background: $gray-100;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        z-index: 1;
+        padding: 3px;
+        width: 22px;
+        height: 22px;
+        .icon {
+          font-size: $font-size-xs;
+        }
+      }
+    }
+  }
+}

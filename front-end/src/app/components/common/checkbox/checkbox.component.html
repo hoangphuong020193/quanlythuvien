@@ -1,0 +1,3 @@
+<i class="icon icon-checkbox-checked" *ngIf="checked" (click)="onClick()" [class.disabled]="disabled"></i>
+<i class="icon icon-checkbox-unchecked" *ngIf="!checked" (click)="onClick()" [class.disabled]="disabled"></i>
+<span *ngIf="text != ''">{{text}}</span>

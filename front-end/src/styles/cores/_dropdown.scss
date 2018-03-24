@@ -1,0 +1,126 @@
+dropdown,
+dropdown-subordinate,
+dropdown-multi-select,
+.dropdown-custom {
+  // The dropdown wrapper (`<div>`)
+  .dropdown,
+  .dropdown-multi-select {
+    position: relative;
+  }
+  .dropdown-toggle {
+    color: $dropdown-text-color;
+    min-width: 10rem; // Prevent the focus on the dropdown toggle when closing dropdowns
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    white-space: nowrap;
+    border: 1px solid $dropdown-border-color;
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    background: $dropdown-bg;
+    &:focus {
+      outline: 0;
+    }
+    .icon {
+      color: $dropdown-text-color;
+    }
+    .selected-item-content {
+      width: fit-content;
+      padding-right: 10px;
+      overflow: hidden;
+      .drop-down-item-name {
+        float: left;
+      }
+    }
+    .not-selected {
+      color: $black05;
+      font-weight: normal;
+    }
+  } // The dropdown menu
+  .dropdown-menu {
+    position: absolute;
+    left: 0 !important;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: $dropdown-min-width;
+    padding: $dropdown-padding-y 0;
+    margin: $dropdown-margin-top 0 0; // override default ul
+    font-size: $font-size-md; // Redeclare because nesting can cause inheritance issues
+    color: $black;
+    text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
+    list-style: none;
+    background-color: $dropdown-bg;
+    background-clip: padding-box;
+    border: 1px solid $dropdown-border-color;
+    max-height: 250px;
+    overflow-y: auto;
+    @include border-radius($border-radius);
+    @include box-shadow($dropdown-box-shadow);
+    &.show {
+      display: block !important;
+    }
+  } // Links, buttons, and more within the dropdown menu
+  //
+  // `<button>`-specific styles are denoted with `// For <button>s`
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+    width: 100%; // For `<button>`s
+    padding: 3px $dropdown-item-padding-x;
+    clear: both;
+    font-weight: normal;
+    color: $dropdown-link-color;
+    text-align: inherit; // For `<button>`s
+    white-space: nowrap; // prevent links from randomly breaking onto new lines
+    background: none; // For `<button>`s
+    border: 0; // For `<button>`s
+    @include hover-focus {
+      color: $dropdown-link-hover-color;
+      text-decoration: none;
+      background-color: $dropdown-link-hover-bg;
+    }
+    &.hover {
+      color: $dropdown-link-hover-color;
+      text-decoration: none;
+      background-color: $dropdown-link-hover-bg;
+    }
+    &.active,
+    &:active {
+      text-decoration: none;
+    }
+    &.disabled,
+    &:disabled {
+      color: $dropdown-link-disabled-color;
+      cursor: not-allowed;
+      background-color: transparent;
+    }
+    &.seperate-line {
+      border-bottom: 1px solid rgba($black, 0.15);
+    }
+    &.hidden {
+      display: none !important;
+    }
+  } // Menu positioning
+  //
+  // Add extra class to `.dropdown-menu` to flip the alignment of the dropdown
+  // menu with the parent.
+  .dropdown-menu-right {
+    right: 0;
+    left: auto; // Reset the default from `.dropdown-menu`
+  }
+  .dropdown-menu-left {
+    right: auto;
+    left: 0;
+  } // Allow for dropdowns to go bottom up (aka, dropup-menu)
+  //
+  // Just add .dropup after the standard .dropdown class and you're set.
+  .dropup {
+    // Different positioning for bottom up menu
+    .dropdown-menu {
+      top: auto;
+      bottom: 100%;
+      margin-bottom: $dropdown-margin-top;
+    }
+  }
+}

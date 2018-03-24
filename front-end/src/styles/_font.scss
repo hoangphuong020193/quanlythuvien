@@ -1,0 +1,93 @@
+@import url("style.css");
+@import url("animation.css");
+.icon {
+  cursor: pointer;
+  color: $icon-color-default;
+  @include hover-focus-not-disabled {
+    color: $blue;
+  }
+  &:disabled:before,
+  &.disabled:before {
+    cursor: not-allowed;
+    color: $icon-color-disabled;
+  }
+  &.icon-star,
+  &.icon-star-o {
+    color: $yellow;
+  }
+  &.icon-check-cycle-fail {
+    color: $icon-color-red;
+  }
+  &.icon-stop {
+    color: $icon-color-black;
+  }
+  &.icon-play-arrow {
+    color: $icon-color-green;
+  }
+  &.icon-arrow-down-circle:before {
+    color: $icon-color-blue;
+  }
+  &.icon-error:before {
+    color: $icon-color-red;
+  }
+  &.icon-announcement:before {
+    color: $icon-color-green;
+  }
+  &.icon-warning:before {
+    color: $icon-color-orange;
+  }
+  &.icon-add-circle:before {
+    color: $icon-color-green;
+  }
+  &.icon-email-sent:before {
+    color: $icon-color-green;
+  }
+  &.icon-check-cycle-done:before {
+    color: $icon-color-green;
+  }
+  &.icon-check-cycle:not(.disabled):hover:before {
+    color: $icon-color-green;
+  }
+  &.icon-check:before {
+    color: $icon-color-green;
+  }
+  &.icon-excel:before {
+    color: $icon-color-green;
+  }
+  &.icon-light:before {
+    color: $icon-color-orange;
+  }
+  &.icon-black {
+    color: $icon-color-black;
+  }
+  &.icon-white {
+    color: $icon-color-white;
+  }
+  &.icon-10 {
+    font-size: 0.625rem;
+  }
+  &.icon-12 {
+    font-size: 0.75rem;
+  }
+  &.icon-14 {
+    font-size: 0.875rem;
+  }
+  &.icon-16 {
+    font-size: 1rem;
+  }
+  &.icon-18 {
+    font-size: 1.125rem;
+  }
+  &.icon-20 {
+    font-size: 1.25rem;
+  }
+  &.icon-24 {
+    font-size: 1.5rem;
+  }
+  &.icon-36 {
+    font-size: 2.25rem;
+  }
+  &.icon-48 {
+    font-size: 3rem;
+  }
+}

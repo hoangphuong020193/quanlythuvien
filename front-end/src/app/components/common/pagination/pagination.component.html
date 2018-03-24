@@ -1,0 +1,28 @@
+<div class="flex-middle-end padding-15">
+  <div class="flex-middle-end">
+    <div class="flex-middle" *ngIf="totalCount >= 10">
+      <span>Hiện</span>
+      <div class="page-size">
+        <span (click)="toggle = !toggle">
+          <span>{{itemsPerPage}}</span>
+          <i class="icon icon-navigate-down icon-10"></i>
+        </span>
+        <div class="page-size-list" *ngIf="toggle">
+          <div value="10" (click)="updateItemPerPage(10)">10</div>
+          <div value="20" (click)="updateItemPerPage(20)">20</div>
+          <div value="50" (click)="updateItemPerPage(50)">50</div>
+          <div value="100" (click)="updateItemPerPage(100)">100</div>
+        </div>
+      </div>
+      <span>{{type}}</span>
+    </div>
+    <pagination-controls (pageChange)="onPageChange($event)" maxSize="7" directionLinks="true" autoHide="true" screenReaderPaginationLabel="Pagination"
+      screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page"></pagination-controls>
+  </div>
+  <div class="font-size-xs margin-left-5" *ngIf="totalCount != 0" [class.margin-top-15]="totalCount < 10 && totalCount != 0">
+    <span class="color-black05">Hiện</span>
+    <b>{{getCurrentShowing()}}</b>
+    <span class="color-black05">của</span>
+    <b>{{totalCount}}</b> {{type}}
+  </div>
+</div>

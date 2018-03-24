@@ -1,0 +1,32 @@
+pagination {
+  .page-size {
+    position: relative;
+    border: 1px solid $border-color;
+    padding: 0.1875rem 0.625rem;
+    margin: 0 5px;
+    cursor: pointer;
+    .page-size-list {
+      position: absolute;
+      padding: 2px 0;
+      border: 1px solid $border-color;
+      background: white;
+      top: 25px;
+      left: 0;
+      right: 0;
+      >div {
+        cursor: pointer;
+        padding: 0 5px;
+        align-items: center;
+        &:hover {
+          background: $blue;
+        }
+      }
+    }
+  }
+  pagination-controls {
+    .ngx-pagination {
+      padding-left: 0;
+      margin: unset;
+    }
+  }
+}

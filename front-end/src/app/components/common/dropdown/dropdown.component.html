@@ -1,0 +1,16 @@
+<div class="dropdown" #dropdown>
+  <button class="dropdown-toggle" (click)="toggleDropdown($event)" [disabled]="disabled" type="button" id="dropdownMenuButton"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" #dropdownToggle>
+    <div class="flex-middle float-left selected-item-content" *ngIf="showSeletedItem" title="{{selectedItem?.value}}">
+      <div class="drop-down-item-name" [class.not-selected]="selectedItem?.key == -1">{{selectedItem?.value}}</div>
+    </div>
+    <div class="flex-middle-end float-right">
+      <i class="icon" [ngClass]="{'icon-navigate-down icon-12':  iconClass == ''}" #iconToggle></i>
+    </div>
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" *ngIf="!disabled" #dropdownMenu role="menu">
+    <div class="dropdown-item cursor-pointer" [ngClass]="{'hover': currentSelectedIndex === i}" *ngFor="let item of listData; let i = index;"
+      [class.seperate-line]="item.seperateLine" (click)="selectItem(item.key, item.value, item.enabled, $event)" [class.hidden]="!item.enabled"
+      id="{{item.key}}">{{item.value}}</div>
+  </div>
+</div>

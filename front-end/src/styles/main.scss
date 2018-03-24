@@ -1,0 +1,38 @@
+/* this file will be extracted to main dist folder and is imported in index.html */
+
+
+/* This file is for setting global styles  */
+
+@import 'mixin';
+@import 'bootstrap';
+@import 'variables';
+@import 'font';
+@import 'core';
+@import 'common';
+@import 'component';
+body {
+  background-color: $background-color;
+  font-family: $font-family !important;
+  font-size: 16px;
+  line-height: unset;
+}
+
+.row {
+  margin: 0;
+}
+
+a {
+  color: $blue;
+}
+
+input {
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  padding: 0.25rem;
+}
+
+label {
+  color: $black05;
+  font-size: $font-size-sm;
+  margin: 0;
+}

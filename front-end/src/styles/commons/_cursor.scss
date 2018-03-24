@@ -1,0 +1,11 @@
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-prevent {
+  cursor: not-allowed;
+}
+
+.none-pointer {
+  pointer-events: none !important;
+}

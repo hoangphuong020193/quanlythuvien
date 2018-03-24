@@ -1,0 +1,22 @@
+button,
+.btn {
+  cursor: pointer;
+  &:disabled,
+  &.disabled {
+    cursor: not-allowed;
+  }
+}
+
+.btn-blue {
+  background: $blue;
+  color: $white;
+}
+
+.btn-yellow {
+  background-color: $yellow;
+  color: $gray-800;
+}
+
+.btn-full {
+  width: 100%;
+}

@@ -1,0 +1,7 @@
+<table>
+  <tbody>
+    <tr *ngFor="let row of rows;">
+      <td class="month-input" *ngFor="let monthObj of row.listMonths" (click)="selectMonth(monthObj)" [ngClass]="{'selected': monthObj.monthId == monthSelected, 'disabled': monthObj.disabled}">{{monthObj.month}}</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,23 @@
+<div class="datetimepicker-content">
+  <i class="icon icon-calendar" [ngClass]="{'disabled': disabled}" (click)="showDateTimePicker()" *ngIf="showIcon"></i>
+  <input type="text" value="{{parseDate(setDate)}}" class="date-input" [class.no-icon]="!showIcon" (focusout)="focusOutInput($event)"
+    (keydown)="onKeyDown($event)" [disabled]="disabled" onkeydown="return false" (click)="showDateTimePicker()" (focus)="showDateTimePicker()"
+    #datetInput placeholder="{{placeholder}}">
+  <div class="datetimepicker-panel" #datetimePickerPanel>
+    <div class="dt-nav">
+      <div class="previous" (click)="onPreviousPage(ShowScreen)">
+        <i class="icon icon-navigate-left"></i>
+      </div>
+      <div class="select-screen" (click)="onSelectScreen(ShowScreen)">{{title}}</div>
+      <div class="next" (click)="onNextPage(ShowScreen)">
+        <i class="icon icon-navigate-right"></i>
+      </div>
+    </div>
+    <days class="dt-day" [class.display-block]="ShowScreen == Screen.Day" (selectDayEmit)="selectDay($event)" [minDate]="minDate"
+      [maxDate]="maxDate" [daySelected]="daySelected" [monthSelected]="monthSelected" [yearSelected]="yearSelected" [pageCurrent]="pageDayCurrent"></days>
+    <months class="dt-month" [class.display-block]="ShowScreen == Screen.Month" (selectMonthEmit)="selectMonth($event)" [minDate]="minDate"
+      [maxDate]="maxDate" [monthSelected]="monthSelected" [yearSelected]="yearSelected" [pageCurrent]="pageMonthCurrent"></months>
+    <years class="dt-year" [class.display-block]="ShowScreen == Screen.Year" (selectYearEmit)="selectYear($event)" [minDate]="minDate"
+      [maxDate]="maxDate" [yearSelected]="yearSelected != yearTemp ? yearTemp : yearSelected" [pageCurrent]="pageYearCurrent"></years>
+  </div>
+</div>

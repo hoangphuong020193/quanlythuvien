@@ -1,0 +1,185 @@
+home {
+  .header {
+    background: white;
+    .logo {
+      cursor: pointer;
+      .letter {
+        display: inline-block;
+        font-weight: bold;
+        font-size: 30px;
+        position: relative;
+        color: $gray-600;
+        transform-style: preserve-3d;
+        perspective: 400;
+        z-index: 1;
+      }
+      .letter:before,
+      .letter:after {
+        position: absolute;
+        content: attr(data-letter);
+        transform-origin: top left;
+        top: 0;
+        left: 0;
+      }
+      .letter,
+      .letter:before,
+      .letter:after {
+        transition: all 0.3s ease-in-out;
+      }
+      .letter:before {
+        color: $blue;
+        text-shadow: -1px 0px 1px rgba($blue, .8), 1px 0px 1px rgba($gray-800, .8);
+        z-index: 3;
+        transform: rotateX(0deg) rotateY(-15deg) rotateZ(0deg);
+      }
+      .letter:after {
+        color: rgba($gray-800, .11);
+        z-index: 2;
+        transform: scale(1.08, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 1deg);
+      }
+      .letter:hover:before {
+        color: $blue;
+        transform: rotateX(0deg) rotateY(-40deg) rotateZ(0deg);
+      }
+      .letter:hover:after {
+        transform: scale(1.08, 1) rotateX(0deg) rotateY(40deg) rotateZ(0deg) skew(0deg, 22deg);
+      }
+    }
+    .search-form {
+      position: relative;
+      flex: 1;
+      margin: 0 40px;
+      .form-control {
+        width: 100%;
+        padding-right: 101.78px;
+        &:focus {
+          box-shadow: unset;
+        }
+      }
+      .search-label {
+        position: absolute;
+        background: $gray-300;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 10px;
+        top: 0;
+        right: 0;
+        border-radius: 0 0.25rem 0.25rem 0;
+        cursor: pointer;
+      }
+    }
+    .user-control {
+      display: flex;
+      .user-book-tracking,
+      .user-notify,
+      .user-login {
+        display: flex;
+        align-items: center;
+        padding-right: 40px;
+        color: $blue;
+        cursor: pointer;
+        position: relative;
+        .icon {
+          font-size: 25px;
+          padding-right: 5px;
+        }
+      }
+      .book-in-cart {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid $blue;
+        padding: 5px 10px;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        color: $blue;
+        .icon-shopping-basket {
+          font-size: 20px;
+          color: $blue;
+        }
+        .number-of-choose {
+          background: $blue;
+          font-size: $font-size-sm;
+          color: $white;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-weight: bold;
+          height: 20px;
+          width: 20px;
+          border-radius: 2px;
+        }
+        &:hover {
+          background: $blue;
+          color: $white;
+          .icon-shopping-basket {
+            color: $white;
+          }
+          .number-of-choose {
+            background: $white;
+            color: $blue;
+          }
+        }
+      }
+      .user-notify {
+        position: relative;
+        .number-notification {
+          font-size: $font-size-xs;
+          position: absolute;
+          left: 4px;
+          top: -8px;
+          color: $white;
+          background: $red;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border: 1px solid #189eff;
+          font-weight: bold;
+          width: 20px;
+          height: 20px;
+        }
+        .menu-notify {
+          @include tooltip-panel() {
+            top: 40px;
+            left: -65px;
+            min-width: 200px;
+            padding: 0;
+          }
+        }
+      }
+      .user-login {
+        .menu-login {
+          @include tooltip-panel() {
+            top: 40px;
+            left: -5px;
+            min-width: 130px;
+            padding: 0;
+          }
+        }
+      }
+      .menu {
+        display: none;
+        >div {
+          color: $blue;
+          border-top: 1px solid $border-color;
+          padding: 5px;
+          width: fit-content;
+          white-space: nowrap;
+          >div {
+            width: 100%;
+            &:hover {
+              background: $blue;
+              color: $white;
+            }
+          }
+        }
+        &.show {
+          display: block;
+        }
+      }
+    }
+  }
+}

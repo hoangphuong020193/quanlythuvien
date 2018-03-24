@@ -1,0 +1,72 @@
+/*Color*/
+
+$blue: #03bef4;
+$red: #f44336;
+$black015: rgba($black, 0.15);
+$black035: rgba($black, 0.35);
+$black05: rgba($black, 0.5);
+$black075: rgba($black, 0.75);
+$white015:rgba($white, 0.15);
+$white035:rgba($white, 0.35);
+$white05:rgba($white, 0.5);
+$white075:rgba($white, 0.75);
+$background-color: #ECEEEF;
+$background-backdrop: rgba($black, 0.5);
+$color-arrow:$blue;
+$color-border:rgba($black, 0.15);
+/*Font*/
+
+$font-family: Open Sans,
+Helvetica;
+$font-default: 16px;
+$font-size-xss: 0.625rem; //10px
+$font-size-xs: 0.75rem; //12px
+$font-size-sm: 0.875rem; //14px
+$font-size-md: 1rem; //16px
+$font-size-lg: 1.125rem; //18px
+$font-size-xl: 1.25rem; //20px;
+$font-size-xxl: 1.5rem; //24px;
+/*Icon*/
+
+$icon-color-black: $black;
+$icon-color-default: $gray-600;
+$icon-color-green: $green;
+$icon-color-white: $white;
+$icon-color-orange: $orange;
+$icon-color-red: $red;
+$icon-color-blue: $blue;
+$icon-color-disabled: rgba($black, 0.1);
+/*Box*/
+
+$box-shadow: 0 6px 12px 0 rgba($black, .18);
+/*Table*/
+
+$table-border-color: $gray-500;
+$table-bg-color: $white;
+$table-cell-padding-md: .75rem;
+$table-cell-padding-sm: .5rem;
+$table-tr-odd: #F6F7F8;
+/*DropDown*/
+
+$caret-width: .3em;
+$dropdown-min-width: 10rem;
+$dropdown-padding-y: .5rem;
+$dropdown-margin-top: .125rem;
+$dropdown-text-color: $black;
+$dropdown-bg: $white;
+$dropdown-border-color: $black015;
+$dropdown-box-shadow: 0 .5rem 1rem rgba($black, .175);
+$dropdown-item-padding-x: 1.5rem;
+$dropdown-link-color: $black;
+$dropdown-link-hover-color: $black;
+$dropdown-link-hover-bg: $blue;
+$dropdown-link-disabled-color: #636c72;
+$dropdown-margin-top: .125rem;
+/*Input*/
+
+$input-padding-x-md: .1rem;
+$input-padding-y-md: .4rem;
+$input-padding-x-sm: .5rem;
+$input-padding-y-sm: .35rem;
+$input-background-disabled: #F6F7F8;
+$input-border-color: #EFF0F2;
