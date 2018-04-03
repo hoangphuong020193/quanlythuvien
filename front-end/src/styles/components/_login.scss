@@ -1,0 +1,65 @@
+login {
+  .modal-body {
+    background: $gray-100;
+    border-radius: 0.3rem;
+    .login-form {
+      padding: 15px;
+      background: $white;
+      .login-header {
+        margin-bottom: 30px;
+        display: flex;
+        justify-content: center;
+        >div {
+          color: $blue;
+          font-size: $font-size-lg;
+          border-bottom: 2px solid $blue;
+          width: 60%;
+          text-align: center;
+        }
+      }
+      .login-error {
+        background-color: rgba($red, 0.4);
+        color: $red;
+        border: 1px solid $red;
+        padding: 15px;
+        border-radius: 0.25rem;
+        margin-bottom: 30px;
+      }
+      .login-input {
+        padding-bottom: 25px;
+        position: relative;
+        input {
+          outline: none;
+          &:focus~label,
+          &:valid~label {
+            top: -20px;
+            left: 0;
+            font-size: $font-size-sm;
+            color: $black075;
+          }
+          &:-webkit-autofill {
+            box-shadow: 0 0 0 1000px white inset !important;
+            -webkit-box-shadow: 0 0 0 1000px white inset !important;
+          }
+        }
+        label {
+          position: absolute;
+          left: 0;
+          top: 0;
+          margin: 9px;
+          padding: 0 10px;
+          background-color: $white;
+          -webkit-transition: top .2s ease-in-out, font-size .2s ease-in-out;
+          transition: top .2s ease-in-out, font-size .2s ease-in-out;
+          color: $black05;
+        }
+        .error-login {
+          color: $red;
+          font-size: $font-size-xs;
+          display: flex;
+          align-items: center;
+        }
+      }
+    }
+  }
+}

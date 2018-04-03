@@ -1,0 +1,43 @@
+book-management {
+  #search-book {
+    position: relative;
+    input {
+      padding-right: 25px;
+    }
+    .icon-search {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+    }
+  }
+}
+
+book-editor-popup {
+  #book-img {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    img {
+      height: 270px;
+    }
+  }
+  #description-section {
+    margin-top: 15px;
+  }
+  dropdown {
+    .dropdown-toggle {
+      width: 100%;
+    }
+  }
+  .border-error {
+    border: 1px $red solid !important;
+  }
+  datetimepicker {
+    .datetimepicker-content {
+      .date-input {
+        width: 100%;
+      }
+    }
+  }
+}

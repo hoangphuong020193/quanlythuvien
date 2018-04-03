@@ -1,0 +1,19 @@
+publisher-management {
+    #search-box {
+      position: relative;
+      .icon {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+      }
+      input {
+        padding-right: 25px;
+      }
+    }
+    .col-stt,
+    .col-enabled {
+      width: 50px;
+      text-align: center;
+    }
+  }
+  

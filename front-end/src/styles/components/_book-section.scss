@@ -1,0 +1,41 @@
+book-section {
+  width: 100%;
+  .book-section-header {
+    font-size: $font-size-xl;
+    font-weight: 400;
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  .book-section-list {
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    .swiper-prev,
+    .swiper-next {
+      position: absolute;
+      border-radius: 50%;
+      top: 45%;
+      width: 32px;
+      height: 32px;
+      border: 1px solid #ccc;
+      background: $white;
+      >div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+    }
+    .swiper-prev {
+      left: 0;
+    }
+    .swiper-next {
+      right: 0;
+    }
+    .book-section-content {
+      width: 100%;
+    }
+  }
+}
