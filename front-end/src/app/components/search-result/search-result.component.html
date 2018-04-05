@@ -1,0 +1,24 @@
+<section>
+  <div>
+    <span>Kết quả tìm kiếm cho "</span>
+    <span class="font-style-bold">{{searchString}}</span>
+    <span>": {{totalResult}} (sách)</span>
+  </div>
+  <div class="block-book-item" *ngFor="let books of listBookShow">
+    <div class="book-item" *ngFor="let book of books.listBooks">
+      <div class="image cursor-pointer" (click)="navigateToBookDetail(book.bookCode)">
+        <div>
+          <book-image [code]="book.bookCode"></book-image>
+        </div>
+      </div>
+      <div class="book-name cursor-pointer" (click)="navigateToBookDetail(book.bookCode)">{{book.bookName}}</div>
+      <button class="btn btn-blue" (click)="addBookToCart(book.bookId)">Thêm vào giỏ sách</button>
+    </div>
+  </div>
+  <div class="no-result" *ngIf="totalResult == 0">
+    <div>Sách bạn đang tìm không có.</div>
+  </div>
+  <div class="flex-middle-center color-blue cursor-pointer margin-top-15" *ngIf="listBook.length < totalResult" (click)="loadMoreBook()">
+    Tải thêm
+  </div>
+</section>

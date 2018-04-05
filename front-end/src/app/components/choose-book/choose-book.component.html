@@ -1,0 +1,23 @@
+<section class="row">
+  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+    <div class="color-background-white padding-15">
+      <div class="font-style-bold">
+        Danh mục sách
+      </div>
+      <div *ngFor="let category of listCategories; let i = index;">
+        <div *ngIf="showType(i)" class="font-style-bold font-size-sm margin-top-10 margin bottom-5">
+          {{category.type}}
+        </div>
+        <div class="padding-left-20 padding-bottom-5 cursor-pointer" (click)="navigateToBookView(category.categoryName)">
+          {{category.categoryName}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 color-background-white">
+    <book-section [typeSection]="BookSection.New"></book-section>
+    <div *ngFor="let section of randomSection">
+      <book-section [typeSection]="section.categoryName"></book-section>
+    </div>
+  </div>
+</section>

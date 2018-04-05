@@ -1,0 +1,21 @@
+<div class="book-section-header">
+  <span>{{typeSection}}</span>
+  <span class="cursor-pointer color-blue font-size-sm" (click)="this.routerService.bookView(typeSection)">Xem thêm >></span>
+</div>
+<div class="book-section-list">
+  <ngx-carousel class="book-section-content" [inputs]="carouselOption">
+    <div NgxCarouselPrev class="swiper-prev">
+      <div>
+        <i class="icon icon-navigate-left"></i>
+      </div>
+    </div>
+    <ngx-tile NgxCarouselItem *ngFor="let book of books">
+      <book-item [book]="book"></book-item>
+    </ngx-tile>
+    <div NgxCarouselNext class="swiper-next">
+      <div>
+        <i class="icon icon-navigate-right"></i>
+      </div>
+    </div>
+  </ngx-carousel>
+</div>

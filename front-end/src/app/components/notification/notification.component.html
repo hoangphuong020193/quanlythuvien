@@ -1,0 +1,11 @@
+<section class="color-background-white padding-15">
+  <div>
+    <div *ngFor="let notify of listNotifications" class="margin-top-5 flex-middle-start">
+      <div class="date-time">{{parseDateToString(notify.messageDate)}}</div>
+      <div [class.font-style-bold]="notify.isNew">{{notify.message}}</div>
+    </div>
+  </div>
+  <div class="font-style-bold" *ngIf="listNotifications.length == 0">
+    Không có tin nhắn
+  </div>
+</section>

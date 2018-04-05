@@ -1,0 +1,78 @@
+<section class="row color-background-white padding-15">
+  <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+    <div>
+      <book-image [code]="book.bookCode"></book-image>
+    </div>
+  </div>
+  <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 font-size-xxl">
+      <favorite-star [favorited]="book.favorite" (callback)="favoriteBook()"></favorite-star>
+      <span>{{book.bookName}}</span>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 font-size-sm margin-top-5">
+      <span>Tác giả:</span>
+      <span class="color-blue">{{book.author}}</span>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 font-size-sm margin-top-5">
+      <span>Số lượng:</span>
+      <span class="font-style-bold" [ngClass]="{'color-blue': book.amountAvailable > 0, 'color-red': book.amountAvailable == 0}">{{book.amountAvailable}}</span>
+      <span>/ {{book.amount}}</span>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 book-tag margin-top-15" *ngIf="book.tag != null">
+      <i class="icon icon-tags padding-right-15"></i>
+      <span class="font-size-sm color-black05">{{book.tag}}</span>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-top-15 flex-middle">
+      <button class="btn btn-blue" (click)="addBookToCart()">
+        <i class=" icon icon-shopping-basket color-white icon-16 "></i>
+        <div>Thêm vào giỏ sách</div>
+      </button>
+      <ngx-qrcode [qrc-element-type]="'url'" [qrc-value]="generateQR()"></ngx-qrcode>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-top-15 " id="section-detail ">
+      <div class="font-style-sermi-bold ">THÔNG TIN CHI TIẾT</div>
+      <div class="margin-top-5 ">
+        <table>
+          <tbody>
+            <tr>
+              <td>Công ty phát hành</td>
+              <td>{{book.supplier}}</td>
+            </tr>
+            <tr>
+              <td>Nhà xuất bản</td>
+              <td>{{book.publisher}}</td>
+            </tr>
+            <tr>
+              <td>Kích thước</td>
+              <td>{{book.size}}</td>
+            </tr>
+            <tr>
+              <td>Tác giả</td>
+              <td>{{book.author}}</td>
+            </tr>
+            <tr>
+              <td>Loại bìa</td>
+              <td>{{book.format}}</td>
+            </tr>
+            <tr>
+              <td>Số trang</td>
+              <td>{{book.pages}}</td>
+            </tr>
+            <tr>
+              <td>Ngày phát hành</td>
+              <td>{{parseDateToString(book.publicationDate)}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="margin-top-15 ">
+    <div class="font-style-sermi-bold ">GIỚI THIỆU SÁCH</div>
+    <div class="color-background-white padding-15 margin-top-5 ">
+      <div [innerHtml]="book.description "></div>
+    </div>
+  </div>
+</section>
