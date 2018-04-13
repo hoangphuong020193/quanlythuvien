@@ -1,0 +1,49 @@
+<section class="padding-15 color-background-white">
+  <div class="display-flex">
+    <div class="margin-right-15">
+      <label for="">Từ ngày</label>
+      <datetimepicker [setDate]="startDate" (selectedDateEmit)="selectStartDate($event)"></datetimepicker>
+    </div>
+    <div class="margin-right-15">
+      <label for="">Đến ngày</label>
+      <datetimepicker [setDate]="endDate" [minDate]="startDate" (selectedDateEmit)="selectEndDate($event)"></datetimepicker>
+    </div>
+    <div class="margin-right-15">
+      <label for="">Nhóm dữ liệu</label>
+      <dropdown [listData]="listGroupBy" [selectedItemId]="selectedGroupById" (selectedItemEmit)="selectGroupBy($event)"></dropdown>
+    </div>
+  </div>
+  <table class="table table-striped margin-top-15">
+    <thead>
+      <tr>
+        <th>STT</th>
+        <th *ngIf="selectedGroupById == GroupBy.Book">Mã sách</th>
+        <th *ngIf="selectedGroupById == GroupBy.Book">Tên sách</th>
+        <th *ngIf="selectedGroupById == GroupBy.Category">Danh mục</th>
+        <th *ngIf="selectedGroupById == GroupBy.User">Mã bạn đọc</th>
+        <th *ngIf="selectedGroupById == GroupBy.User">Họ tên bạn đọc</th>
+        <th *ngIf="selectedGroupById == GroupBy.Library">Chi nhánh</th>
+        <th>Số lần mượn</th>
+        <th>Số lần trả</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of listDatas?.items | paginate : { itemsPerPage: pageSize, currentPage: pageCurrent, totalItems: listDatas?.totalCount}; let i = index">
+        <td>{{((pageCurrent - 1) * pageSize) + i + 1 }}</td>
+        <td *ngIf="selectedGroupById == GroupBy.Book">{{item.bookCode}}</td>
+        <td *ngIf="selectedGroupById == GroupBy.Book">{{item.bookName}}</td>
+        <td *ngIf="selectedGroupById == GroupBy.Category">{{item.categoryName}}</td>
+        <td *ngIf="selectedGroupById == GroupBy.User">{{item.userName}}</td>
+        <td *ngIf="selectedGroupById == GroupBy.User">{{item.firstName + ' ' + item.middleName + ' ' + item.lastName}}</td>
+        <td *ngIf="selectedGroupById == GroupBy.Library">{{item.libraryName}}</td>
+        <td>{{item.noOfBorrow}}</td>
+        <td>{{item.noOfReturn}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <pagination [type]="'hàng'" [totalCount]="listDatas?.totalCount" [currentPageIndex]="pageCurrent" [itemsPerPage]="pageSize"
+    (onPageChangeEvent)="getData($event, pageSize)" (onItemsPerPageChangeEvent)="getData(1, $event)"></pagination>
+  <div *ngIf="listDatas?.totalCount === 0">
+    Không có dữ liệu
+  </div>
+</section>

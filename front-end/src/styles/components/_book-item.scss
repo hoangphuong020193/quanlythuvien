@@ -1,0 +1,45 @@
+book-item {
+  .book-item {
+    display: inline-block;
+    padding: 15px;
+    border: 1px solid transparent;
+    position: relative;
+    width: 100%;
+    &:hover {
+      box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+    }
+    favorite-star {
+      position: absolute;
+      right: 0px;
+      top: 0px;
+    }
+    .image {
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      >div {
+        width: 250px;
+        img {
+          height: 260.16px;
+        }
+      }
+    }
+    .book-name {
+      font-size: $font-size-sm;
+      margin-bottom: 20px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      &:hover {
+        color: $blue;
+      }
+    }
+    .add-to-cart {
+      @include add-to-cart();
+    }
+  }
+  .width-100-per {
+    width: 100%;
+  }
+}

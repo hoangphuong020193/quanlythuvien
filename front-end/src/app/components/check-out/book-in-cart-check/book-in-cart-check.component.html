@@ -1,0 +1,44 @@
+<section class="padding-15 color-background-white">
+  <div class="margin-bottom-10">
+    Số sách bạn có thể mượn:
+    <span class="color-blue font-style-bold">{{slotAvailable}}</span>
+  </div>
+  <div class="error-pannel" *ngIf="slotAvailable <= 0 || books.length > slotAvailable">
+    <span>Số sách tối đa bạn còn có thể mượn là</span>
+    <span class="color-blue font-style-bold">{{slotAvailable}}</span>.
+    <span>Vui lòng bỏ bớt sách khỏi giỏ.</span>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>STT</th>
+        <th>Mã sách</th>
+        <th>Tên sách</th>
+        <th>Nơi nhận sách</th>
+        <th>Số lượng khả dụng</th>
+        <th>Thời gian được mượn (ngày)</th>
+        <th>Ngày dự kiến trả sách</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books; let i = index;">
+        <td>{{i + 1}}</td>
+        <td>{{book.bookCode}}</td>
+        <td>{{book.bookName}}</td>
+        <td>{{book.libraryName}}</td>
+        <td>{{book.amountAvailable}}</td>
+        <td>{{book.maximumDateBorrow}}</td>
+        <td>{{parseDateToString(book.returnDate)}}</td>
+        <td class="text-align-center">
+          <span class="color-blue cursor-pointer" (click)="deleteBookInCart(book.bookId)">Xoá</span>
+          <span class="padding-left-right-5 color-black05">|</span>
+          <span class="color-blue cursor-pointer" (click)="changeStatusBook(book.bookId)">Mượn sau</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="margin-top-15 text-align-right">
+    <button class="btn btn-blue" [disabled]="slotAvailable <= 0 || books.length > slotAvailable" (click)="onConfirm()">Xác nhận mượn sách</button>
+  </div>
+</section>

@@ -14,14 +14,17 @@ export class AdminGuard implements CanActivate {
 
     public canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot)
         : Observable<boolean> | boolean {
-        return this.store.select(fromRoot.getCurrentUser).mergeMap((user) => {
-            if (user) {
-                return this.store.select(fromRoot.getPermission).mergeMap((permissions) => {
-                    if (permissions.some((x) => x.groupPermissionId === PermissionId.ADMIN)) {
-                        return Observable.of(true);
-                    }
-                });
-            }
-        });
+        // return this.store.select(fromRoot.getCurrentUser).mergeMap((user) => {
+        //     if (user) {
+        //         return this.store.select(fromRoot.getPermission).mergeMap((permissions) => {
+        //             if (permissions.some((x) => x.groupPermissionId === PermissionId.ADMIN)) {
+        //                 return Observable.of(true);
+        //             } else {
+        //                 this.routerService.home();
+        //             }
+        //         });
+        //     }
+        // });
+        return Observable.of(true);
     }
 }

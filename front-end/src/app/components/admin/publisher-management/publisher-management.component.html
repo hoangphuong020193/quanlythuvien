@@ -1,0 +1,35 @@
+<section class="padding-15 color-background-white">
+  <div class="flex-space-between">
+    <div>
+      <div id="search-box">
+        <input type="text" #inputBox (keyup)="onKeyUp()">
+        <i class="icon icon-search"></i>
+      </div>
+    </div>
+    <button class="btn btn-blue" (click)="addNew()">Thêm mới</button>
+  </div>
+  <table class="table table-striped table-row-select margin-top-20">
+    <thead>
+      <tr>
+        <th class="col-stt">STT</th>
+        <th>Tên</th>
+        <th>Địa chỉ</th>
+        <th>Điện thoại</th>
+        <th>Email</th>
+        <th class="col-enabled">Bật</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let publisher of listPublishers; let i = index;">
+        <td class="col-stt" (click)="publisherEditor(publisher)">{{i + 1}}</td>
+        <td (click)="publisherEditor(publisher, i)">{{publisher.name}}</td>
+        <td (click)="publisherEditor(publisher, i)">{{publisher.address}}</td>
+        <td (click)="publisherEditor(publisher, i)">{{publisher.phone}}</td>
+        <td (click)="publisherEditor(publisher, i)">{{publisher.email}}</td>
+        <td class="col-enabled">
+          <checkbox [checked]="publisher.enabled" (checkedCallback)="updateStatus(i, $event)"></checkbox>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>

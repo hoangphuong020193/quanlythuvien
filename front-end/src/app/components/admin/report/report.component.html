@@ -1,0 +1,11 @@
+<section class="padding-15 color-background-white">
+  <div class="flex-middle">
+    <span class="padding-right-15">Loại báo cáo/ thống kê</span>
+    <dropdown [listData]="listData" [selectedItemId]="typeSelected" (selectedItemEmit)="selectType($event)"></dropdown>
+  </div>
+</section>
+<user-debt-book *ngIf="typeSelected == ReportType.DebtBook"></user-debt-book>
+<top-book *ngIf="typeSelected == ReportType.TopBook"></top-book>
+<read-statistics *ngIf="typeSelected == ReportType.ReadStatistics"></read-statistics>
+<borrow-status *ngIf="typeSelected == ReportType.BorrowStatus"></borrow-status>
+<category-report *ngIf="typeSelected == ReportType.CategoryReport"></category-report>

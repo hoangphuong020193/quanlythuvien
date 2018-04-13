@@ -21,6 +21,8 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 using System.IO;
 using System.Threading.Tasks;
+using System.Net;
+using System.Linq;
 
 namespace Library.API.Controllers.Book
 {
@@ -210,7 +212,13 @@ namespace Library.API.Controllers.Book
         public async Task<IActionResult> SaveBookAsync([FromBody] BookViewModel model)
         {
             var result = await _saveBookCommand.ExecuteAsync(model);
-            return new ObjectResult(result.Succeeded ? result.Data : null);
+            return new ObjectResult(result.Succeeded ? result.Data
+                :
+                new
+                {
+                    code = result.Errors.First().Code,
+                    description = result.Errors.First().Description
+                });
         }
 
         [HttpPost]

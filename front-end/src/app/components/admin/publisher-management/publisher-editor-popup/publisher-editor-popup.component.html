@@ -1,0 +1,35 @@
+<div class="modal-dialog modal-md">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="modal-title font-style-bold">{{publisher.name}}</span>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-5 col-xs-12 margin-bottom-5 flex-middle">Tên</div>
+        <div class="col-lg-9 col-md-9 col-sm-7 col-xs-12 margin-bottom-5">
+          <input type="text" [(ngModel)]="publisher.name">
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-sm-5 col-xs-12 margin-bottom-5 flex-middle">Địa chỉ</div>
+        <div class="col-lg-9 col-md-9 col-sm-7 col-xs-12 margin-bottom-5">
+          <input type="text" [(ngModel)]="publisher.address">
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-sm-5 col-xs-12 margin-bottom-5 flex-middle">Số điện thoại</div>
+        <div class="col-lg-9 col-md-9 col-sm-7 col-xs-12 margin-bottom-5">
+          <input type="tel" [(ngModel)]="publisher.phone">
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-sm-5 col-xs-12 margin-bottom-5 flex-middle">Email</div>
+        <div class="col-lg-9 col-md-9 col-sm-7 col-xs-12 margin-bottom-5">
+          <input type="email" [(ngModel)]="publisher.email">
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <span class="color-red font-size-sm">{{errorMessage}}</span>
+      <button class="btn btn-blue" (click)="onSave()">Lưu</button>
+      <button class="btn btn-warning" (click)="this.close()">Huỷ</button>
+    </div>
+  </div>
+</div>

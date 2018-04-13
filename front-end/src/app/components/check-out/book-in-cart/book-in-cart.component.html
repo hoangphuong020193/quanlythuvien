@@ -1,0 +1,74 @@
+<div>
+  <div class="margin-bottom-10">
+    <span class="font-size-lg">GIỎ SÁCH</span>
+    <span class="font-size-sm color-black05">({{bookAvailable.length}} sách)</span>
+  </div>
+  <div class="book-in-cart-item">
+    <div class="book-item" *ngFor="let book of bookAvailable">
+      <div class="book-img">
+        <book-image [code]="book.bookCode"></book-image>
+      </div>
+      <div class="book-info">
+        <div class="font-size-lg font-style-bold">{{book.bookName}}</div>
+        <div class="margin-top-10">
+          <span>Tác giả:</span>
+          <span class="color-blue cursor-pointer">{{book.author}}</span>
+        </div>
+        <div class="margin-top-10">
+          <span>Nơi lưu trữ:</span>
+          <span class="color-blue">{{book.libraryName}}</span>
+        </div>
+        <div class="margin-top-10">
+          <span>Còn lại:</span>
+          <span class="color-blue font-style-bold">{{book.amountAvailable}}</span>
+        </div>
+        <div class="flex-middle margin-top-10">
+          <div class="color-blue cursor-pointer" (click)="deleteBookInCart(book.bookId)">Xoá</div>
+          <div class="color-blue cursor-pointer padding-left-20" (click)="changeStatusBook(book.bookId, BookStatus.Waiting)">Mượn sau</div>
+        </div>
+      </div>
+    </div>
+    <div class="flex-middle-end padding-15" *ngIf="bookAvailable.length > 0">
+      <button class="btn btn-blue" (click)="this.route.checkOutBook()">Tiến hành mượn sách</button>
+    </div>
+    <div *ngIf="bookAvailable.length == 0" class="empty-cart">
+      <div class="padding-15">
+        <i class="icon icon-shopping-basket position-relative">
+          <i class="icon icon-remove-circle"></i>
+        </i>
+      </div>
+      <div class="padding-bottom-15">Không có sách nào trong giỏ sách của bạn.</div>
+      <div>
+        <button class="btn btn-yellow" (click)="navigateToHome()">Tiếp tục chọn sách</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="bookWaiting.length > 0">
+  <div class="margin-bottom-10 margin-top-20">
+    <span class="font-size-lg">CHỜ MƯỢN SAU</span>
+    <span class="font-size-sm color-black05">({{bookWaiting.length}} sách)</span>
+  </div>
+  <div class="book-in-cart-item-wating">
+    <div class="book-item" *ngFor="let book of bookWaiting">
+      <div class="book-img">
+        <book-image [code]="book.bookCode"></book-image>
+      </div>
+      <div class="book-info">
+        <div class="font-size-lg font-style-bold">{{book.bookName}}</div>
+        <div class="margin-top-10">
+          <span>Tác giả:</span>
+          <span class="color-blue cursor-pointer">{{book.author}}</span>
+        </div>
+        <div class="margin-top-10">
+          <span>Còn lại:</span>
+          <span class="color-blue font-style-bold">{{book.amountAvailable}}</span>
+        </div>
+        <div class="flex-middle margin-top-10">
+          <div class="color-blue cursor-pointer" (click)="deleteBookInCart(book.bookId)">Xoá</div>
+          <div class="color-blue cursor-pointer padding-left-20" (click)="changeStatusBook(book.bookId, BookStatus.InOrder)">Thêm vào giỏ sách</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,110 @@
+<div class="modal-dialog modal-lg">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="modal-title font-style-bold">{{book.bookCode}} - {{book.bookName}}</span>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" id="book-img">
+          <div>
+            <book-image [src]="urlImg"></book-image>
+          </div>
+          <div class="color-blue cursor-pointer margin-top-5" (click)="onChooseFile()">Chọn ảnh...</div>
+          <input #fileInput class="fileInput" hidden type="file" accept=".jpg,.jpeg,.img,.png" (change)="selectedImg($event)">
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 flex-column margin-bottom-5">
+            <label for="book-name">
+              <span>Tên sách</span>
+              <span class="color-red">*</span>
+            </label>
+            <input type="text" name="book-name" [(ngModel)]="book.bookName">
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 flex-column margin-bottom-5">
+            <label for="book-code">
+              <span>Mã sách</span>
+              <span class="color-red">*</span>
+            </label>
+            <input type="text" name="book-code" [(ngModel)]="book.bookCode" (ngModelChange)="bookCodeChange($event)" [class.border-error]="bookCodeExisted">
+            <div class="font-size-sm color-red" *ngIf="bookCodeExisted">Mã sách đã tồn tại</div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 flex-column margin-bottom-5">
+            <label for="author">Tác giả</label>
+            <input type="text" name="author" [(ngModel)]="book.author">
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 flex-column margin-bottom-5">
+            <label for="category">
+              <span>Danh mục</span>
+              <span class="color-red">*</span>
+            </label>
+            <dropdown [listData]="categories" [selectedItemId]="book.categoryId" (selectedItemEmit)="selectCategory($event)"></dropdown>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 flex-column margin-bottom-5">
+            <label for="publisher">
+              <span>Nhà xuất bản</span>
+              <span class="color-red">*</span>
+            </label>
+            <dropdown [listData]="publishers" [selectedItemId]="book.publisherId" (selectedItemEmit)="selectPublisher($event)"></dropdown>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 flex-column margin-bottom-5">
+            <label for="supplier">
+              <span>Công ty phát hành</span>
+              <span class="color-red">*</span>
+            </label>
+            <dropdown [listData]="suppliers" [selectedItemId]="book.supplierId" (selectedItemEmit)="selectSupplier($event)"></dropdown>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 flex-column margin-bottom-5">
+            <label for="publicationDate">Ngày phát hành</label>
+            <datetimepicker [setDate]="book.publicationDate" (selectedDateEmit)="selectPublishDate($event)"></datetimepicker>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 flex-column margin-bottom-5">
+            <label for="publicationDate">
+              <span>Nơi lưu trữ</span>
+              <span class="color-red">*</span>
+            </label>
+            <dropdown [listData]="libraries" [selectedItemId]="book.libraryId" (selectedItemEmit)="selectLibrary($event)"></dropdown>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 flex-column margin-bottom-5">
+            <label for="format">Loại bìa</label>
+            <input type="text" name="format" [(ngModel)]="book.format">
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 flex-column margin-bottom-5">
+            <label for="size">Kích thước</label>
+            <input type="text" name="size" [(ngModel)]="book.size">
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 flex-column margin-bottom-5">
+            <label for="pages">Số trang</label>
+            <input type="number" name="pages" min="0" step="1" [(ngModel)]="book.pages">
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 flex-column margin-bottom-5">
+            <label for="amount">Số lượng sách</label>
+            <input type="number" name="amount" min="0" step="1" [(ngModel)]="book.amount">
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 flex-column margin-bottom-5">
+            <label for="maximumDateBorrow">Số ngày mượn</label>
+            <input type="number" name="maximumDateBorrow" min="0" step="1" [(ngModel)]="book.maximumDateBorrow">
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 flex-column margin-bottom-5">
+            <label for="tag">Tag</label>
+            <input type="text" name="tag" [(ngModel)]="book.tag">
+          </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row" id="description-section">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <quill-editor [(ngModel)]="book.description" [modules]="options" [placeholder]="' '"></quill-editor>
+          </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="padding-15">
+            <checkbox [checked]="!book.enabled" [text]="'Sách không còn khả dụng'" (checkedCallback)="bookAvaiable($event)"></checkbox>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <span class="color-red font-size-sm">{{errorMessage}}</span>
+      <button class="btn btn-blue" (click)="onSave()">Lưu</button>
+      <button class="btn btn-warning" (click)="this.close()">Huỷ</button>
+    </div>
+  </div>
+</div>

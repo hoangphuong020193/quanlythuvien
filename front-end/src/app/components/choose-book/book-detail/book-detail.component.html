@@ -1,7 +1,7 @@
 <section class="row color-background-white padding-15">
   <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-    <div>
-      <book-image [code]="book.bookCode"></book-image>
+    <div class="flex-middle-center">
+      <book-image class="flex-middle-center" [code]="book.bookCode"></book-image>
     </div>
   </div>
   <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 row">
@@ -12,6 +12,10 @@
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 font-size-sm margin-top-5">
       <span>Tác giả:</span>
       <span class="color-blue">{{book.author}}</span>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 font-size-sm margin-top-5">
+      <span>Nơi lưu trữ:</span>
+      <span class="color-blue">{{book.libraryName}}</span>
     </div>
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 font-size-sm margin-top-5">
       <span>Số lượng:</span>

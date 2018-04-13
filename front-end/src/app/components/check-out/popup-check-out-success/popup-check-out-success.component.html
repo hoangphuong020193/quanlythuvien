@@ -1,0 +1,21 @@
+<div class="modal-dialog modal-md" role="document">
+  <form class="modal-content">
+    <div class="modal-header">
+      <span class="modal-title font-style-bold">Đăng ký mượn sách thành công</span>
+    </div>
+    <div class="modal-body">
+      <div>Bạn đã đăng ký mượn sách thành công. Mã mượn sách của bạn là:</div>
+      <ngx-qrcode class="flex-center" [qrc-element-type]="elementType" [qrc-value]="requestCode"></ngx-qrcode>
+      <h2 class="text-align-center">{{requestCode}}</h2>
+      <div>Vui lòng đưa mã này cho thủ thư khi bạn đến nhận sách.</div>
+      <div class="font-size-sm color-red">
+        <span class="color-red">*</span>
+        <span>Mã có giá trị trong 24 tiếng.</span>
+        <span class="color-red">*</span>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-blue" (click)="this.close()">Xong</button>
+    </div>
+  </form>
+</div>

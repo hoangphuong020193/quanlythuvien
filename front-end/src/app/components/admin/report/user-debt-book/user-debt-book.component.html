@@ -1,0 +1,33 @@
+<section class="padding-15 color-background-white">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Mã bạn đọc</th>
+        <th>Họ Tên bạn đọc</th>
+        <th>Mã yêu cầu</th>
+        <th>Mã sách</th>
+        <th>Tên sách</th>
+        <th>Ngày nhận sách</th>
+        <th>Ngày phải trả</th>
+        <th>Số ngày quá hạn</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of listUserDebt?.items | paginate : { itemsPerPage: pageSize, currentPage: pageCurrent, totalItems: listUserDebt?.totalCount };">
+        <td>{{user.userName}}</td>
+        <td>{{user.firstName + ' ' + user.middleName + ' '+ user.lastName}}</td>
+        <td>{{user.requestCode}}</td>
+        <td>{{user.bookCode}}</td>
+        <td>{{user.bookName}}</td>
+        <td>{{parseDateToString(user.receivedDate)}}</td>
+        <td>{{parseDateToString(user.deadlineDate)}}</td>
+        <td>{{calculatorOverDays(user.deadlineDate)}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <pagination [type]="'hàng'" [totalCount]="listUserDebt?.totalCount" [currentPageIndex]="pageCurrent" [itemsPerPage]="pageSize"
+    (onPageChangeEvent)="getListDebt($event, pageSize)" (onItemsPerPageChangeEvent)="getListDebt(1, $event)"></pagination>
+  <div *ngIf="listUserDebt?.totalCount === 0">
+    Không có bạn đọc nào nợ sách
+  </div>
+</section>

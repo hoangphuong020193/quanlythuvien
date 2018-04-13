@@ -1,0 +1,59 @@
+<section class="padding-15 color-background-white">
+  <div class="display-flex">
+    <div class="padding-right-15">
+      <label for="">Lọc kết quả</label>
+      <div>
+        <input type="text" placeholder="Mã sách/ Tên sách..." (keypress)="onKeyPress($event)" #searchInput>
+      </div>
+    </div>
+    <div class="margin-right-15">
+      <label for="">Từ ngày</label>
+      <datetimepicker [setDate]="startDate" (selectedDateEmit)="selectStartDate($event)"></datetimepicker>
+    </div>
+    <div class="margin-right-15">
+      <label for="">Đến ngày</label>
+      <datetimepicker [setDate]="endDate" [minDate]="startDate" (selectedDateEmit)="selectEndDate($event)"></datetimepicker>
+    </div>
+    <div class="margin-right-15">
+      <label for="">Nơi nhận sách</label>
+      <dropdown [listData]="listLibraries" [selectedItemId]="selectedLibraryId" (selectedItemEmit)="selectLibrary($event)"></dropdown>
+    </div>
+    <div class="margin-right-15">
+      <label for="">Trạng thái</label>
+      <dropdown [listData]="listStatus" [selectedItemId]="selectedStatus" (selectedItemEmit)="selectStatus($event)"></dropdown>
+    </div>
+  </div>
+  <table class="table table-striped margin-top-15">
+    <thead>
+      <tr>
+        <th>STT</th>
+        <th>Mã sách</th>
+        <th>Tên sách</th>
+        <th>Bạn đọc</th>
+        <th>Tình trạng</th>
+        <th>Mã mượn sách</th>
+        <th>Ngày mượn</th>
+        <th>Ngày trả</th>
+        <th>Nơi nhận sách</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of listDatas?.items | paginate : { itemsPerPage: pageSize, currentPage: pageCurrent, totalItems: listDatas?.totalCount}; let i = index">
+        <td>{{((pageCurrent - 1) * pageSize) + i + 1 }}</td>
+        <td>{{item.bookCode}}</td>
+        <td>{{item.bookName}}</td>
+        <td>{{item.fullName + ' - ' + item.userName}}</td>
+        <td>{{getStatus(item.status)}}</td>
+        <td>{{item.requestCode}}</td>
+        <td>{{parseDateToString(item.requestCode)}}</td>
+        <td>{{parseDateToString(item.requestCode)}}</td>
+        <td>{{item.libraryName}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <pagination [type]="'hàng'" [totalCount]="listDatas?.totalCount" [currentPageIndex]="pageCurrent" [itemsPerPage]="pageSize"
+    (onPageChangeEvent)="getBorrowStatus($event, pageSize)" (onItemsPerPageChangeEvent)="getBorrowStatus(1, $event)"></pagination>
+  <div *ngIf="listDatas?.totalCount === 0">
+    Không có dữ liệu
+  </div>
+</section>

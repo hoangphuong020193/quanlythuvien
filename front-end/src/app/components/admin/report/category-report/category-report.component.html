@@ -1,0 +1,31 @@
+<section class="padding-15 color-background-white">
+  <div class="display-flex">
+    <div class="padding-right-15">
+      <label for="">Lọc kết quả</label>
+      <div>
+        <input type="text" placeholder="Tên danh mục" (keypress)="onKeyPress($event)" #searchInput>
+      </div>
+    </div>
+  </div>
+  <table class="table table-striped margin-top-15">
+    <thead>
+      <tr>
+        <th>STT</th>
+        <th>Danh mục</th>
+        <th>Số lượng sách</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of listDatas?.items | paginate : { itemsPerPage: pageSize, currentPage: pageCurrent, totalItems: listDatas?.totalCount}; let i = index">
+        <td>{{((pageCurrent - 1) * pageSize) + i + 1 }}</td>
+        <td>{{item.categoryName}}</td>
+        <td>{{item.noOfBook}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <pagination [type]="'hàng'" [totalCount]="listDatas?.totalCount" [currentPageIndex]="pageCurrent" [itemsPerPage]="pageSize"
+    (onPageChangeEvent)="getCategoryReport($event, pageSize)" (onItemsPerPageChangeEvent)="getCategoryReport(1, $event)"></pagination>
+  <div *ngIf="listDatas?.totalCount === 0">
+    Không có dữ liệu
+  </div>
+</section>

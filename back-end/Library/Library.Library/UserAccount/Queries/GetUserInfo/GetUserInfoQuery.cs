@@ -11,10 +11,10 @@ namespace Library.Library.UserAccount.Queries.GetUserInfo
 {
     public class GetUserInfoQuery : IGetUserInfoQuery
     {
-        private readonly IRepository<Data.Entities.Account.Users> _userRepository;
+        private readonly IRepository<Users> _userRepository;
         private readonly HttpContext _httpContext;
 
-        public GetUserInfoQuery(IRepository<Data.Entities.Account.Users> userRepository,
+        public GetUserInfoQuery(IRepository<Users> userRepository,
             IHttpContextAccessor httpContextAccessor)
         {
             _userRepository = userRepository;

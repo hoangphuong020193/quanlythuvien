@@ -1,0 +1,81 @@
+<section class="padding-15 color-background-white" *ngIf="!loading">
+  <div class="flex-middle">
+    <span class="margin-right-15">Mã mượn sách/ Mã bạn đọc</span>
+    <span class="margin-right-15" id="search-request-code">
+      <input type="text" id="search-code-box" (keypress)="onKeyPress($event)" placeholder="A1B2C">
+      <i class="icon icon-search" (click)="searchCode()"></i>
+    </span>
+    <span class="margin-right-15">
+      Nơi nhận sách
+    </span>
+    <span>
+      <dropdown [listData]="listLibrary" [selectedItemId]="selectedLibraryId" (selectedItemEmit)="selectLibrary($event)"></dropdown>
+    </span>
+  </div>
+  <div class="margin-top-20" *ngIf="listBooks.length > 0">
+    <div class="row user-info">
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 ">
+        <div>
+          <label>Mã mượn sách</label>
+          <div>{{requestInfo.requestCode}}</div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+        <div>
+          <label>Mã bạn đọc</label>
+          <div>{{requestInfo.userName}}</div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+        <div>
+          <label>Họ tên bạn đọc</label>
+          <div>{{requestInfo.fullName}}</div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+        <div>
+          <label>Ngày yêu cầu</label>
+          <div>{{parseDateToString(requestInfo.requestDate)}}</div>
+        </div>
+      </div>
+    </div>
+    <table class="table table-striped margin-top-20">
+      <thead>
+        <tr>
+          <th *ngIf="!onlyRequest">Mã yêu cầu</th>
+          <th>Mã sách</th>
+          <th>Tên sách</th>
+          <th>Nơi nhận</th>
+          <th>Tình trạng</th>
+          <th>Hạn trả sách</th>
+          <th>Ngày nhận sách</th>
+          <th>Ngày trả sách</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of listBooks; let i = index">
+          <td *ngIf="!onlyRequest" (click)="getRequestInfo(book.requestCode)" class="color-blue cursor-pointer">{{book.requestCode}}</td>
+          <td>{{book.bookCode}}</td>
+          <td>{{book.bookName}}</td>
+          <td>{{book.libraryName}}</td>
+          <td>{{getStatus(book.status)}}</td>
+          <td>{{parseDateToString(book.deadlineDate)}}</td>
+          <td>{{parseDateToString(book.receiveDate)}}</td>
+          <td>{{parseDateToString(book.returnDate)}}</td>
+          <td class="text-align-center">
+            <div *ngIf="book.status == BookStatus.Pending">
+              <span class="color-blue cursor-pointer" (click)="takenBook(book.bookCode, i)">Lấy sách</span>
+              <span>|</span>
+              <span class="color-blue cursor-pointer">Huỷ sách</span>
+            </div>
+            <span class="color-blue cursor-pointer" *ngIf="book.status == BookStatus.Borrowing" (click)="returnBook(book.bookCode, i)">Trả sách</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="listBooks.length == 0 && code != ''">
+    Không có dữ liệu
+  </div>
+</section>

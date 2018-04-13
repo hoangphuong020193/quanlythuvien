@@ -1,0 +1,52 @@
+<section class="padding-15 color-background-white">
+  <div>
+    <span>
+      <checkbox [checked]="true" [text]="'Sách chờ nhận'" (checkedCallback)="selectStatus(BookStatus.Pending, $event)"></checkbox>
+    </span>
+    <span>
+      <checkbox [checked]="true" [text]="'Sách đang mượn'" (checkedCallback)="selectStatus(BookStatus.Borrowing, $event)"></checkbox>
+    </span>
+    <span>
+      <checkbox [checked]="true" [text]="'Sách hết hạn'" (checkedCallback)="selectStatus(BookStatus.OutDeadline, $event)"></checkbox>
+    </span>
+    <span>
+      <checkbox [text]="'Sách đã trả'" (checkedCallback)="selectStatus(BookStatus.Returned, $event)"></checkbox>
+    </span>
+  </div>
+  <div class="margin-top-15">
+    <table>
+      <thead>
+        <tr>
+          <th>Mã sách</th>
+          <th>Tên sách</th>
+          <th>Mã mượn sách</th>
+          <th>Ngày yêu cầu mượn</th>
+          <th>Ngày nhận sách</th>
+          <th>Ngày trả sách</th>
+          <th>Hạn trả sách</th>
+          <th>Trạng thái</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of listMyBook?.items | paginate : { itemsPerPage: defaultItemsPerPage, currentPage: currentPage, totalItems: listMyBook?.totalCount };">
+          <td>
+            <div class="color-blue cursor-pointer" (click)="navigateBookDetail(book.bookCode)">{{book.bookCode}}</div>
+          </td>
+          <td>{{book.bookName}}</td>
+          <td>{{book.requestCode}}</td>
+          <td>{{parseDateToString(book.requestDate)}}</td>
+          <td>{{parseDateToString(book.receiveDate)}}</td>
+          <td>{{parseDateToString(book.returnDate)}}</td>
+          <td>{{parseDateToString(book.deadlineDate)}}</td>
+          <td class="font-style-bold text-align-center" [class.color-blue]="book.status == BookStatus.Pending" [class.color-red]="book.status == BookStatus.OutDeadline"
+            [class.color-green]="book.status == BookStatus.Borrowing">{{getStatus(book.status)}}</td>
+        </tr>
+        <tr *ngIf="listMyBook?.totalCount == 0">
+          <td colspan="8">Không có dữ liệu</td>
+        </tr>
+      </tbody>
+    </table>
+    <pagination [type]="'sách'" [totalCount]="listMyBook?.totalCount" [currentPageIndex]="currentPage" [itemsPerPage]="defaultItemsPerPage"
+      (onPageChangeEvent)="getListMyBook($event, defaultItemsPerPage)" (onItemsPerPageChangeEvent)="getListMyBook(1, $event)"></pagination>
+  </div>
+</section>

@@ -1,0 +1,35 @@
+<section class="padding-15 color-background-white">
+  <div class="display-flex">
+    <div class="padding-right-15">
+      <label for="">Từ ngày</label>
+      <datetimepicker [setDate]="startDate" (selectedDateEmit)="selectStartDate($event)"></datetimepicker>
+    </div>
+    <div>
+      <label for="">Đến ngày</label>
+      <datetimepicker [setDate]="endDate" [minDate]="startDate" (selectedDateEmit)="selectEndDate($event)"></datetimepicker>
+    </div>
+  </div>
+  <table class="table table-striped margin-top-15">
+    <thead>
+      <tr>
+        <th>STT</th>
+        <th>Mã sách</th>
+        <th>Tên sách</th>
+        <th>Số lần mượn</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of listBooks?.items | paginate : { itemsPerPage: pageSize, currentPage: pageCurrent, totalItems: listBooks?.totalCount}; let i = index">
+        <td>{{((pageCurrent - 1) * pageSize) + i + 1 }}</td>
+        <td>{{book.bookCode}}</td>
+        <td>{{book.bookName}}</td>
+        <td>{{book.amount}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <pagination [type]="'hàng'" [totalCount]="listBooks?.totalCount" [currentPageIndex]="pageCurrent" [itemsPerPage]="pageSize"
+    (onPageChangeEvent)="getTopBook($event, pageSize)" (onItemsPerPageChangeEvent)="getTopBook(1, $event)"></pagination>
+  <div *ngIf="listBooks?.totalCount === 0">
+    Không có dữ liệu
+  </div>
+</section>

@@ -1,8 +1,8 @@
-<div class="book-section-header">
+<div class="book-section-header" *ngIf="books.length > 0">
   <span>{{typeSection}}</span>
   <span class="cursor-pointer color-blue font-size-sm" (click)="this.routerService.bookView(typeSection)">Xem thêm >></span>
 </div>
-<div class="book-section-list">
+<div class="book-section-list" *ngIf="books.length > 0">
   <ngx-carousel class="book-section-content" [inputs]="carouselOption">
     <div NgxCarouselPrev class="swiper-prev">
       <div>

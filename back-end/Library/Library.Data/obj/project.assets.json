@@ -4342,12 +4342,15 @@
   },
   "project": {
     "version": "1.0.0",
+    "restoreSettings": {
+      "hideWarningsAndErrors": true
+    },
     "restore": {
-      "projectUniqueName": "D:\\Project\\QuanLyThuVien\\back-end\\Library\\Library.Data\\Library.Data.csproj",
+      "projectUniqueName": "D:\\Project\\Library\\back-end\\Library\\Library.Data\\Library.Data.csproj",
       "projectName": "Library.Data",
-      "projectPath": "D:\\Project\\QuanLyThuVien\\back-end\\Library\\Library.Data\\Library.Data.csproj",
+      "projectPath": "D:\\Project\\Library\\back-end\\Library\\Library.Data\\Library.Data.csproj",
       "packagesPath": "C:\\Users\\phuonghoangnguyen\\.nuget\\packages\\",
-      "outputPath": "D:\\Project\\QuanLyThuVien\\back-end\\Library\\Library.Data\\obj\\",
+      "outputPath": "D:\\Project\\Library\\back-end\\Library\\Library.Data\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -4366,8 +4369,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "D:\\Project\\QuanLyThuVien\\back-end\\Library\\Library.Common\\Library.Common.csproj": {
-              "projectPath": "D:\\Project\\QuanLyThuVien\\back-end\\Library\\Library.Common\\Library.Common.csproj"
+            "D:\\Project\\Library\\back-end\\Library\\Library.Common\\Library.Common.csproj": {
+              "projectPath": "D:\\Project\\Library\\back-end\\Library\\Library.Common\\Library.Common.csproj"
             }
           }
         }

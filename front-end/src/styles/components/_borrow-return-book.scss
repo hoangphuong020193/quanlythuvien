@@ -1,0 +1,18 @@
+borrow-return-book {
+  #search-request-code {
+    position: relative;
+    input {
+      padding-right: 25px;
+    }
+    .icon-search {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+    }
+  }
+  .user-info {
+    >div {
+      padding: 0;
+    }
+  }
+}

@@ -90,7 +90,14 @@ const APP_COMPONENTS: any[] = [
     APP_PROVIDERS
   ],
   entryComponents: [
-
+    components.LoginPopupComponent,
+    components.PopupConfirmComponent,
+    components.PopupCheckOutSuccessComponent,
+    components.BookEditorPopupComponent,
+    components.SupplierEditorPopupComponent,
+    components.PublisherEditorPopupComponent,
+    components.CategoryEditorPopupComponent,
+    components.LibraryEditorPopupComponent,
   ]
 })
 
