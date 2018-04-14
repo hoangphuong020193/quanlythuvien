@@ -13411,15 +13411,12 @@
   },
   "project": {
     "version": "1.0.0",
-    "restoreSettings": {
-      "hideWarningsAndErrors": true
-    },
     "restore": {
-      "projectUniqueName": "D:\\Project\\Library\\back-end\\Library\\Library.API\\Library.API.csproj",
+      "projectUniqueName": "D:\\Project\\QuanLyThuVien\\back-end\\Library\\Library.API\\Library.API.csproj",
       "projectName": "Library.API",
-      "projectPath": "D:\\Project\\Library\\back-end\\Library\\Library.API\\Library.API.csproj",
+      "projectPath": "D:\\Project\\QuanLyThuVien\\back-end\\Library\\Library.API\\Library.API.csproj",
       "packagesPath": "C:\\Users\\phuonghoangnguyen\\.nuget\\packages\\",
-      "outputPath": "D:\\Project\\Library\\back-end\\Library\\Library.API\\obj\\",
+      "outputPath": "D:\\Project\\QuanLyThuVien\\back-end\\Library\\Library.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -13438,17 +13435,17 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "D:\\Project\\Library\\back-end\\Library\\Library.Common\\Library.Common.csproj": {
-              "projectPath": "D:\\Project\\Library\\back-end\\Library\\Library.Common\\Library.Common.csproj"
+            "D:\\Project\\QuanLyThuVien\\back-end\\Library\\Library.Common\\Library.Common.csproj": {
+              "projectPath": "D:\\Project\\QuanLyThuVien\\back-end\\Library\\Library.Common\\Library.Common.csproj"
             },
-            "D:\\Project\\Library\\back-end\\Library\\Library.Data\\Library.Data.csproj": {
-              "projectPath": "D:\\Project\\Library\\back-end\\Library\\Library.Data\\Library.Data.csproj"
+            "D:\\Project\\QuanLyThuVien\\back-end\\Library\\Library.Constants\\Library.Constants.csproj": {
+              "projectPath": "D:\\Project\\QuanLyThuVien\\back-end\\Library\\Library.Constants\\Library.Constants.csproj"
             },
-            "D:\\Project\\Library\\back-end\\Library\\LibraryApiFramework\\Library.ApiFramework.csproj": {
-              "projectPath": "D:\\Project\\Library\\back-end\\Library\\LibraryApiFramework\\Library.ApiFramework.csproj"
+            "D:\\Project\\QuanLyThuVien\\back-end\\Library\\Library.Data\\Library.Data.csproj": {
+              "projectPath": "D:\\Project\\QuanLyThuVien\\back-end\\Library\\Library.Data\\Library.Data.csproj"
             },
-            "D:\\Project\\Library\\back-end\\Library\\Library.Constants\\Library.Constants.csproj": {
-              "projectPath": "D:\\Project\\Library\\back-end\\Library\\Library.Constants\\Library.Constants.csproj"
+            "D:\\Project\\QuanLyThuVien\\back-end\\Library\\LibraryApiFramework\\Library.ApiFramework.csproj": {
+              "projectPath": "D:\\Project\\QuanLyThuVien\\back-end\\Library\\LibraryApiFramework\\Library.ApiFramework.csproj"
             }
           }
         }

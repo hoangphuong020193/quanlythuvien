@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../../store/reducers';
 import { Supplier } from '../../../models/index';
@@ -9,6 +9,8 @@ import {
 import { JQueryHelper } from '../../../shareds/helpers/jquery.helper';
 import { JsHelper } from '../../../shareds/helpers/js.helper';
 import { SupplierService } from '../../../services/supplier.service';
+import { ToastComponent } from '../../common/toast-notification/toast-notification.component';
+import { ToastsManager } from 'ng2-toastr';
 
 @Component({
     selector: 'supplier-management',
@@ -21,11 +23,16 @@ export class SupplierManagementComponent implements OnInit {
     private listOrigins: Supplier[] = [];
 
     @ViewChild('inputBox') private inputBoxElement: any;
+    private toastComponent: ToastComponent;
 
     constructor(
         private store: Store<fromRoot.State>,
         private supplierService: SupplierService,
-        private dialogService: DialogService) { }
+        private dialogService: DialogService,
+        private toastr: ToastsManager,
+        private vcr: ViewContainerRef) {
+        this.toastComponent = new ToastComponent(toastr, vcr);
+    }
 
     public ngOnInit(): void {
         JQueryHelper.showLoading();
@@ -65,6 +72,10 @@ export class SupplierManagementComponent implements OnInit {
 
     private updateStatus(index: number, enabled: boolean): void {
         this.listSuppliers[index].enabled = enabled;
-        this.supplierService.saveSupplier(this.listSuppliers[index]).subscribe();
+        this.supplierService.saveSupplier(this.listSuppliers[index]).subscribe((res) => {
+            this.toastComponent.showSuccess('Cập nhập thành công');
+        }, (err) => {
+            this.toastComponent.showError('Cập nhập không thành công');
+        });
     }
 }

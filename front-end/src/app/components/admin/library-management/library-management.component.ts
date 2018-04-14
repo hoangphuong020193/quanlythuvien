@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../../store/reducers';
 import { DialogService } from 'angularx-bootstrap-modal';
@@ -7,6 +7,8 @@ import { JsHelper } from '../../../shareds/helpers/js.helper';
 import { Library } from '../../../models/library.model';
 import { LibraryEditorPopupComponent } from './library-editor-popup/library-editor-popup.component';
 import { LibraryService } from '../../../services/library.service';
+import { ToastComponent } from '../../common/toast-notification/toast-notification.component';
+import { ToastsManager } from 'ng2-toastr';
 
 @Component({
     selector: 'library-management',
@@ -19,11 +21,16 @@ export class LibraryManagementComponent implements OnInit {
     private listOrigins: Library[] = [];
 
     @ViewChild('inputBox') private inputBoxElement: any;
+    private toastComponent: ToastComponent;
 
     constructor(
         private store: Store<fromRoot.State>,
         private libraryService: LibraryService,
-        private dialogService: DialogService) { }
+        private dialogService: DialogService,
+        private toastr: ToastsManager,
+        private vcr: ViewContainerRef) {
+        this.toastComponent = new ToastComponent(toastr, vcr);
+    }
 
     public ngOnInit(): void {
         JQueryHelper.showLoading();
@@ -63,6 +70,10 @@ export class LibraryManagementComponent implements OnInit {
 
     private updateStatus(index: number, enabled: boolean): void {
         this.listLibraries[index].enabled = enabled;
-        this.libraryService.saveLibrary(this.listLibraries[index]).subscribe();
+        this.libraryService.saveLibrary(this.listLibraries[index]).subscribe((res) => {
+            this.toastComponent.showSuccess('Cập nhập thành công');
+        }, (err) => {
+            this.toastComponent.showError('Cập nhập không thành công');
+        });
     }
 }

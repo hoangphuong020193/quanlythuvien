@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ViewContainerRef } from '@angular/core';
 import { DialogComponent, DialogService } from 'angularx-bootstrap-modal';
 import { Book } from '../../../../models/book.model';
 import { Category } from '../../../../models/category.model';
@@ -11,6 +11,9 @@ import { BookService } from '../../../../services/book.service';
 import { Config } from '../../../../config';
 import * as moment from 'moment';
 import { Format } from '../../../../shareds/constant/format.constant';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { ToastComponent } from '../../../common/toast-notification/toast-notification.component';
+import { PopupConfirmComponent } from '../../../common/popup-confirm/popup-confirm.component';
 
 @Component({
     selector: 'book-editor-popup',
@@ -18,6 +21,7 @@ import { Format } from '../../../../shareds/constant/format.constant';
 })
 export class BookEditorPopupComponent extends DialogComponent<any, any> implements OnInit {
     public book: Book;
+    private toastComponent: ToastComponent;
 
     private categories: DropDownData[] = [];
     private publishers: DropDownData[] = [];
@@ -47,8 +51,11 @@ export class BookEditorPopupComponent extends DialogComponent<any, any> implemen
     constructor(
         public dialogService: DialogService,
         private store: Store<fromRoot.State>,
-        private bookService: BookService) {
+        private bookService: BookService,
+        private toastr: ToastsManager,
+        private vcr: ViewContainerRef) {
         super(dialogService);
+        this.toastComponent = new ToastComponent(toastr, vcr);
     }
 
     public ngOnInit() {
@@ -153,14 +160,39 @@ export class BookEditorPopupComponent extends DialogComponent<any, any> implemen
     }
 
     private onSave(): void {
+        if (!this.book.enabled) {
+            this.dialogService.addDialog(PopupConfirmComponent, {
+                title: 'Xác nhận ẩn sách khỏi hệ thống chọn sách',
+                message: 'Bạn có muốn ẩn sách này khỏi hệ thống chọn sách?'
+            }).subscribe((confirm) => {
+                if (confirm) {
+                    this.saveSach();
+                }
+            });
+        } else {
+            this.saveSach();
+        }
+    }
+
+    private saveSach(): void {
         if (this.validationData()) {
             this.errorMessage = '';
             this.bookService.saveBook(this.book).subscribe((res) => {
                 if (res) {
+                    const isNew = this.book.bookId === 0;
                     this.book.bookId = res.bookId;
                     this.result = this.book;
                     if (this.fileToUpload !== null) {
                         this.bookService.saveImage(this.fileToUpload, this.book.bookId).subscribe();
+                    }
+
+                    if (!this.book.enabled) {
+                        this.toastComponent.showSuccess('Đã ẩn sách khỏi hệ thống chọn sách');
+                    }
+                    else if (isNew) {
+                        this.toastComponent.showSuccess('Đã thêm thành công sách');
+                    } else {
+                        this.toastComponent.showSuccess('Đã sửa thông tin sách');
                     }
 
                     this.close();

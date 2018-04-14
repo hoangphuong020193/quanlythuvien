@@ -8815,11 +8815,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Project\\Library\\back-end\\Library\\UnitTest\\UnitTest.csproj",
+      "projectUniqueName": "D:\\Project\\QuanLyThuVien\\back-end\\Library\\UnitTest\\UnitTest.csproj",
       "projectName": "UnitTest",
-      "projectPath": "D:\\Project\\Library\\back-end\\Library\\UnitTest\\UnitTest.csproj",
+      "projectPath": "D:\\Project\\QuanLyThuVien\\back-end\\Library\\UnitTest\\UnitTest.csproj",
       "packagesPath": "C:\\Users\\phuonghoangnguyen\\.nuget\\packages\\",
-      "outputPath": "D:\\Project\\Library\\back-end\\Library\\UnitTest\\obj\\",
+      "outputPath": "D:\\Project\\QuanLyThuVien\\back-end\\Library\\UnitTest\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -8838,14 +8838,14 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "D:\\Project\\Library\\back-end\\Library\\Library.CrossCutting\\Library.CrossCutting.csproj": {
-              "projectPath": "D:\\Project\\Library\\back-end\\Library\\Library.CrossCutting\\Library.CrossCutting.csproj"
+            "D:\\Project\\QuanLyThuVien\\back-end\\Library\\Library.CrossCutting\\Library.CrossCutting.csproj": {
+              "projectPath": "D:\\Project\\QuanLyThuVien\\back-end\\Library\\Library.CrossCutting\\Library.CrossCutting.csproj"
             },
-            "D:\\Project\\Library\\back-end\\Library\\Library.Library\\Library.Library.csproj": {
-              "projectPath": "D:\\Project\\Library\\back-end\\Library\\Library.Library\\Library.Library.csproj"
+            "D:\\Project\\QuanLyThuVien\\back-end\\Library\\Library.Library\\Library.Library.csproj": {
+              "projectPath": "D:\\Project\\QuanLyThuVien\\back-end\\Library\\Library.Library\\Library.Library.csproj"
             },
-            "D:\\Project\\Library\\back-end\\Library\\LibraryApiFramework\\Library.ApiFramework.csproj": {
-              "projectPath": "D:\\Project\\Library\\back-end\\Library\\LibraryApiFramework\\Library.ApiFramework.csproj"
+            "D:\\Project\\QuanLyThuVien\\back-end\\Library\\LibraryApiFramework\\Library.ApiFramework.csproj": {
+              "projectPath": "D:\\Project\\QuanLyThuVien\\back-end\\Library\\LibraryApiFramework\\Library.ApiFramework.csproj"
             }
           }
         }
